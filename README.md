@@ -1,7 +1,10 @@
 # humaniza-numeros
 
-[![Build Status](https://travis-ci.org/freguinhas/humaniza-numeros.svg?branch=master)](https://travis-ci.org/robertofrega/humaniza-numeros)
-[![Known Vulnerabilities](https://snyk.io/test/github/freguinhas/humaniza-numeros/badge.svg)](https://snyk.io/test/github/robertofrega/humaniza-numeros)
+
+[![Coverage Status](https://coveralls.io/repos/github/robertofrega/humaniza-numeros/badge.svg?branch=master)](https://coveralls.io/github/robertofrega/humaniza-numeros?branch=master)
+[![npm version](https://badge.fury.io/js/humaniza-numeros.svg)](https://badge.fury.io/js/humaniza-numeros)
+[![npm](https://img.shields.io/npm/dt/humaniza-numeros.svg)](https://www.npmjs.com/package/humaniza-numeros)
+[![GitHub license](https://img.shields.io/github/license/robertofrega/humaniza-numeros.svg)]()
 
 > Transforma números muito grandes em versões mais legíveis por humanos, de acordo com a escala utilizada no Brasil: `1234567` → `1,2 Milhão`
 
@@ -42,4 +45,4 @@ Número de casas decimais
 
 ## Licença
 
-MIT © [Roberto Frega](https://github.com/robertofrega)
+MIT © [Beto Frega](https://github.com/robertofrega)
