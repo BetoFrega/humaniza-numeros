@@ -46,7 +46,8 @@
   "husky": {
     "hooks": {
       "commit-msg": "validate-commit-msg",
-      "post-merge": "npm install"
+      "post-merge": "npm install",
+      "pre-push": "npm run test"
     }
   }
 }
