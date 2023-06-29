@@ -1,7 +1,7 @@
 {
   "name": "humaniza-numeros",
   "version": "0.0.0-development",
-  "description": "Transforma numeros grandes (12345678) em versões mais legíveis (12,3 Milhões).",
+  "description": "Transforma números grandes (12345678) em versões mais legíveis (12,3 Milhões).",
   "main": "./dist/index.js",
   "files": [
     "./dist/"
@@ -20,12 +20,12 @@
     "portuguese",
     "pt-br"
   ],
-  "author": "https://github.com/robertofrega",
+  "author": "https://github.com/betofrega",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/robertofrega/humaniza-numeros/issues"
+    "url": "https://github.com/betofrega/humaniza-numeros/issues"
   },
-  "homepage": "https://github.com/robertofrega/humaniza-numeros#readme",
+  "homepage": "https://github.com/betofrega/humaniza-numeros#readme",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.10.5",
