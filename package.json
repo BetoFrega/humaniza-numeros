@@ -1,6 +1,6 @@
 {
   "name": "humaniza-numeros",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Transforma números grandes (12345678) em versões mais legíveis (12,3 Milhões).",
   "main": "./dist/index.js",
   "files": [
