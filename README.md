@@ -1,9 +1,9 @@
 # humaniza-numeros
 
-[![Test](https://github.com/robertofrega/humaniza-numeros/actions/workflows/test.yml/badge.svg)](https://github.com/robertofrega/humaniza-numeros/actions/workflows/test.yml)
+[![Test](https://github.com/BetoFrega/humaniza-numeros/actions/workflows/test.yml/badge.svg)](https://github.com/BetoFrega/humaniza-numeros/actions/workflows/test.yml)
 [![npm version](https://badge.fury.io/js/humaniza-numeros.svg)](https://badge.fury.io/js/humaniza-numeros)
 [![npm](https://img.shields.io/npm/dt/humaniza-numeros.svg)](https://www.npmjs.com/package/humaniza-numeros)
-[![GitHub license](https://img.shields.io/github/license/robertofrega/humaniza-numeros.svg)](LICENSE)
+[![GitHub license](https://img.shields.io/github/license/BetoFrega/humaniza-numeros.svg)](LICENSE)
 
 > Transforma números muito grandes em versões mais legíveis por humanos, de acordo com a escala utilizada no Brasil: `1234567` → `1,2 Milhão`
 
@@ -77,7 +77,9 @@ O Husky instala os hooks em `npm ci`: o commit-msg verifica Conventional Commits
 
 O CI testa Node.js 22 e 24 em pushes e pull requests. A publicação com semantic-release ocorre somente em pushes para `master`, depois de `npm run check`. O build também roda automaticamente em `npm pack` e `npm publish`.
 
-Configure o secret `npm_token` no GitHub com permissão para publicar este pacote; o workflow o fornece como `NPM_TOKEN`. O `GITHUB_TOKEN` recebe as permissões necessárias no job de publicação. Nenhum token é necessário para desenvolver ou validar o pacote localmente.
+A publicação aceita npm Trusted Publishing (OIDC): nas configurações do pacote no npm, cadastre o repositório `BetoFrega/humaniza-numeros` e o workflow `npmpublish.yml` como trusted publisher. O job possui `id-token: write` para obter a identidade de publicação.
+
+Como alternativa, configure o secret `npm_token` no GitHub com um token granular válido, permissão de escrita neste pacote e bypass de 2FA para CI; o workflow o fornece como `NPM_TOKEN`. O `GITHUB_TOKEN` recebe as permissões necessárias no job de publicação. Nenhum token é necessário para desenvolver ou validar o pacote localmente.
 
 A atualização do requisito de Node.js e o mapa de exports devem ser publicados como uma versão major. Utilize um commit com `!` (por exemplo, `feat!: moderniza o stack`) ou um rodapé `BREAKING CHANGE:` para que semantic-release determine a versão. Os imports devem usar `humaniza-numeros`; caminhos internos como `humaniza-numeros/dist/index.js` não fazem parte dos exports.
 
@@ -85,4 +87,4 @@ A modernização mantém os resultados atuais da função, incluindo suas regras
 
 ## Licença
 
-MIT © [Beto Frega](https://github.com/robertofrega)
+MIT © [Beto Frega](https://github.com/BetoFrega)
