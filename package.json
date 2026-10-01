@@ -2,14 +2,21 @@
   "name": "humaniza-numeros",
   "version": "1.0.1",
   "description": "Transforma números grandes (12345678) em versões mais legíveis (12,3 Milhões).",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "files": [
     "./dist/"
   ],
   "scripts": {
-    "test": "npm run build && mocha --require @babel/register --reporter spec",
-    "semantic-release": "semantic-release",
-    "build": "babel src --out-dir dist"
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && node --test --experimental-test-coverage test/humaniza.Test.js test/modules.test.js",
+    "test:package": "node scripts/test-package.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run format:check && npm run typecheck && npm test && npm run test:package",
+    "prepare": "husky",
+    "prepack": "npm run build",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -27,27 +34,31 @@
   },
   "homepage": "https://github.com/betofrega/humaniza-numeros#readme",
   "devDependencies": {
-    "@babel/cli": "7.x",
-    "@babel/core": "7.x",
-    "@babel/preset-env": "7.x",
-    "@babel/register": "7.x",
-    "chai": "4.x",
-    "cz-conventional-changelog": "3.x",
-    "husky": "^5.0.9",
-    "mocha": "10.x",
-    "semantic-release": "21.x",
-    "validate-commit-msg": "2.x"
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "esbuild": "^0.28.2",
+    "husky": "^9.1.7",
+    "prettier": "^3.9.9",
+    "semantic-release": "^25.0.9",
+    "typescript": "^7.0.2"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "type": "module",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "validate-commit-msg",
-      "post-merge": "npm install",
-      "pre-push": "npm run test"
-    }
+  "engines": {
+    "node": "^22.14.0 || >=24.10.0"
   }
 }

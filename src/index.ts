@@ -5,7 +5,7 @@ const escalaCurta = [
   'Bilhão', //...
   'Trilhão',
   'Quadrilhão',
-  'Quintilhão'
+  'Quintilhão',
 ];
 
 /**
@@ -16,12 +16,16 @@ const escalaCurta = [
  * @param {number} decimals Número de casas decimais
  * @returns {string} String representando o número humanizado em português do Brasil.
  */
-function humanizaNumeros(input, decimals = 0) {
+function humanizaNumeros(input: number, decimals = 0): string {
   const indexEscala = Math.ceil(input.toString().length / 3) - 1;
   const divisor = Math.pow(10, 3 * indexEscala);
   const base = input / divisor;
-  const escala = base <= 2 ? escalaCurta[indexEscala] : escalaCurta[indexEscala].replace('ão', 'ões');
-  const baseRound = Math.round(base * Math.pow(10, decimals)) / Math.pow(10, decimals);
+  const escala =
+    base <= 2
+      ? escalaCurta[indexEscala]
+      : escalaCurta[indexEscala].replace('ão', 'ões');
+  const baseRound =
+    Math.round(base * Math.pow(10, decimals)) / Math.pow(10, decimals);
 
   return `${baseRound.toString().replace('.', ',')} ${escala}`;
 }
