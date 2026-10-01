@@ -79,6 +79,8 @@ O CI testa Node.js 22 e 24 em pushes e pull requests. A publicação com semanti
 
 A publicação usa npm Trusted Publishing (OIDC): nas configurações do pacote no npm, cadastre o repositório `BetoFrega/humaniza-numeros` e o workflow `npmpublish.yml` como trusted publisher. O job possui `id-token: write` para obter a identidade de publicação.
 
+Em **Allowed actions** do trusted publisher, habilite **npm publish** para permitir a publicação direta feita pelo semantic-release. Deixe o ambiente vazio, pois o workflow não define um environment. A permissão para `npm stage publish` permite somente enviar o pacote para aprovação com 2FA e não autoriza a publicação direta. Veja a [documentação do npm](https://docs.npmjs.com/trusted-publishers).
+
 O workflow não utiliza `NPM_TOKEN` nem `NODE_AUTH_TOKEN`: a autenticação no npm é feita por OIDC. O `GITHUB_TOKEN` continua necessário para criar tags e releases no GitHub. O secret `npm_token` antigo pode ser removido das configurações do repositório, pois deixou de ser utilizado. Nenhum token é necessário para desenvolver ou validar o pacote localmente.
 
 A atualização do requisito de Node.js e o mapa de exports devem ser publicados como uma versão major. Utilize um commit com `!` (por exemplo, `feat!: moderniza o stack`) ou um rodapé `BREAKING CHANGE:` para que semantic-release determine a versão. Os imports devem usar `humaniza-numeros`; caminhos internos como `humaniza-numeros/dist/index.js` não fazem parte dos exports.
