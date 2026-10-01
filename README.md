@@ -77,9 +77,9 @@ O Husky instala os hooks em `npm ci`: o commit-msg verifica Conventional Commits
 
 O CI testa Node.js 22 e 24 em pushes e pull requests. A publicação com semantic-release ocorre somente em pushes para `master`, depois de `npm run check`. O build também roda automaticamente em `npm pack` e `npm publish`.
 
-A publicação aceita npm Trusted Publishing (OIDC): nas configurações do pacote no npm, cadastre o repositório `BetoFrega/humaniza-numeros` e o workflow `npmpublish.yml` como trusted publisher. O job possui `id-token: write` para obter a identidade de publicação.
+A publicação usa npm Trusted Publishing (OIDC): nas configurações do pacote no npm, cadastre o repositório `BetoFrega/humaniza-numeros` e o workflow `npmpublish.yml` como trusted publisher. O job possui `id-token: write` para obter a identidade de publicação.
 
-Como alternativa, configure o secret `npm_token` no GitHub com um token granular válido, permissão de escrita neste pacote e bypass de 2FA para CI; o workflow o fornece como `NPM_TOKEN`. O `GITHUB_TOKEN` recebe as permissões necessárias no job de publicação. Nenhum token é necessário para desenvolver ou validar o pacote localmente.
+O workflow não utiliza `NPM_TOKEN` nem `NODE_AUTH_TOKEN`: a autenticação no npm é feita por OIDC. O `GITHUB_TOKEN` continua necessário para criar tags e releases no GitHub. O secret `npm_token` antigo pode ser removido das configurações do repositório, pois deixou de ser utilizado. Nenhum token é necessário para desenvolver ou validar o pacote localmente.
 
 A atualização do requisito de Node.js e o mapa de exports devem ser publicados como uma versão major. Utilize um commit com `!` (por exemplo, `feat!: moderniza o stack`) ou um rodapé `BREAKING CHANGE:` para que semantic-release determine a versão. Os imports devem usar `humaniza-numeros`; caminhos internos como `humaniza-numeros/dist/index.js` não fazem parte dos exports.
 
