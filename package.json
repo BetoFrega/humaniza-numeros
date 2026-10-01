@@ -20,19 +20,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/robertofrega/humaniza-numeros.git"
+    "url": "https://github.com/BetoFrega/humaniza-numeros.git"
   },
   "keywords": [
     "number",
     "portuguese",
     "pt-br"
   ],
-  "author": "https://github.com/betofrega",
+  "author": "https://github.com/BetoFrega",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/betofrega/humaniza-numeros/issues"
+    "url": "https://github.com/BetoFrega/humaniza-numeros/issues"
   },
-  "homepage": "https://github.com/betofrega/humaniza-numeros#readme",
+  "homepage": "https://github.com/BetoFrega/humaniza-numeros#readme",
   "devDependencies": {
     "@commitlint/cli": "^21.2.3",
     "@commitlint/config-conventional": "^21.2.3",
